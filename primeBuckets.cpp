@@ -7,7 +7,7 @@ int sSize, mSize, lSize;
 
 bool allFound(int &number){
 	stuff[number] = true;
-	for (int i = 0; i < stuff.size(); i++) if(stuff[i] == false) return false;
+	for (int i = 1; i < stuff.size(); i++) if(stuff[i] == false) return false;
 	return true;
 }
 
@@ -25,6 +25,8 @@ void move(int &a, int &b, int bSize){
 		a = 0;
 	}
 }
+
+void stepsRequired(int s, int b){ std::cout << "\n\nSteps required: " << 2 * (s + b - 2) << std::endl << std::endl; }
 
 int gcd(int a, int b){ return b == 0 ? a : gcd(b, a % b); }
 
@@ -54,11 +56,14 @@ int main(){
 		}
 	}
 	
-	for (int i = 0; i < maxNumbersToFind; i++)	stuff.push_back(false);
+	for (int i = 0; i <= maxNumbersToFind; i++)	stuff.push_back(false);
 	
-	int s = 0, m = 0, l = 0, counter = 0;
+	int s = 0, m = 0, l = 0, counter = 1;
 
 	if (gcd(sSize, lSize) == 1){
+		
+		stepsRequired(sSize, lSize);
+
 		while (!allFound(l)){
 			if (s == 0) 
 				fill(s, sSize);
@@ -70,6 +75,9 @@ int main(){
 			counter++;
 		}
 	}else if (gcd(mSize, lSize) == 1){
+
+		stepsRequired(mSize, lSize);
+
 		while (!allFound(l)){
 			if (m == 0) 
 				fill(m, mSize);
@@ -82,11 +90,11 @@ int main(){
 		}
 	}else {
 		while (!allFound(l)){
-			if (s == 1)
-				move(s, l, lSize);
+//			if (s == 1)
+//				move(s, l, lSize);
 			if (m == 1)
 				move(m, l, lSize);
-			if (s == 0) 
+			else if (s == 0) 
 				fill(s, sSize);
 			else if (m == mSize)
 				empty(m);
