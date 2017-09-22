@@ -38,7 +38,7 @@ int buckets(){
 		if (buckets == 2 || buckets == 3) valid = true;
 		else std::cout << "enter 2 or 3\n";
 	}
-	
+	valid = false;
 	switch (buckets){
 		case 2:
 			while (!valid){
