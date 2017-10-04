@@ -29,6 +29,7 @@ char moveMiddle(std::stack<disk>& left, std::stack<disk>& middle, std::stack<dis
     
     else if (middle.top().last != 'r' && startLessThanEnd(middle, right)) {
         move(middle, right, 'm');
+        //poo poo head!
     }
     return 'r';
 }
