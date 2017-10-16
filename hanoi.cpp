@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stack>
+#include <cmath>
 
 struct disk{
     int value;
@@ -82,7 +83,7 @@ int main() {
         count++;
     }
     std::cout << count << std::endl;
-    
+ 	std::cout << std::pow(3,disks)-1 << std::endl;   
 
     
     return 0;
